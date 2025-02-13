@@ -4,7 +4,7 @@ In order to install the necessary dependencies we use requirements.txt file and 
 
 Just as follows:
 
-    py -3.12.3 -m venv {namefyourvirtualenvironment}
+    py -3.12.3 -m venv namefyourvirtualenvironment
     py -m pip -r install requirements.txt
 
 You also need to source your project in order to run it properly:
