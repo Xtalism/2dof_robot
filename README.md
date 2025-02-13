@@ -10,10 +10,12 @@ Just as follows:
 You also need to source your project in order to run it properly:
     
 On Linux:
+
     source 2dof_robot/bin/activate
 
 On Windows:
-    .\2dof_robot\bin\activate.bash
+
+    .\2dof_robot\bin\activate
 
 If you happen to change or add new dependencies, you can also make your own requirements.txt file as follows:
 
