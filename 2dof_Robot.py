@@ -51,4 +51,7 @@ if __name__ == '__main__':
     sol: tuple = robot.ik_NR(A)
     print(f'q = {np.round(sol[0], 4)}')
     
-    robot.plot(q, block=True, backend='pyplot')
+    try:
+        robot.plot(q, block = True, backend = 'pyplot')
+    except KeyboardInterrupt:
+        exit(0)
