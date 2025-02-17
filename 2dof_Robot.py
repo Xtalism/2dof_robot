@@ -52,4 +52,7 @@ if __name__ == '__main__':
     sol: tuple = robot.ik_NR(A)[0]
     print(f'\nq = {sol}')
     
-    robot.plot(q, block=True, backend='pyplot')
+   try:
+        robot.plot(q, block = True, backend = 'pyplot')
+   except KeyboardInterrupt:
+        exit(0)
