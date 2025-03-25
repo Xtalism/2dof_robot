@@ -2,6 +2,7 @@ import numpy as np
 from roboticstoolbox import ET, Link, Robot
 from spatialmath import quaternion
 from math import pi
+from tabulate import tabulate as disp
 
 if __name__ == '__main__':
     d1 : float = 1.0
@@ -36,19 +37,22 @@ if __name__ == '__main__':
     links: Link = [link0, link1, ef]
     
     robot: Robot = Robot(links, name='2dof')
-    print(Robot)
+    print(robot)
     
     q[1] = pi/2
     A = robot.fkine(q)
     print(A)
     
-    phi, theta, psi = A.eul()
-    print(f'phi = {phi}, theta = {theta}, psi = {psi}')
+    #phi, theta, psi = A.eul()
+    print(disp([A.eul()], headers = ['phi', 'theta', 'psi'], tablefmt = 'simple_grid'))
     
     quat: quaternion.UnitQuaternion = A.UnitQuaternion()
-    print(f'quat = {quat}')
+    print(f'\nquat = {quat}')
     
-    sol: tuple = robot.ik_NR(A)
-    print(f'q = {np.round(sol[0], 4)}')
+    sol: tuple = robot.ik_NR(A)[0]
+    print(f'\nq = {sol}')
     
-    robot.plot(q, block=True, backend='pyplot')
+   try:
+        robot.plot(q, block = True, backend = 'pyplot')
+   except KeyboardInterrupt:
+        exit(0)
